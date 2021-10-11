@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myappone-deployment
+  labels:
+    app: myappone
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myappone
+  template:
+    metadata:
+      labels:
+        app: myappone
+    spec:
+      containers:
+      - name: myappone
+        image: gcr.io/google-samples/hello-app:1.0
+        ports:
+        - containerPort: 8080
